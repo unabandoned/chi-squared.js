@@ -1,20 +1,15 @@
 {
-  "name": "chi-squared",
-  "version": "1.0.0",
+  "name": "@unabandoned/chi-squared",
+  "version": "1.1.0",
   "description": "characteristic functions for chi-squared distributions",
   "main": "index.js",
-  "dependencies": {
-    "gamma": "^1.0.0"
-  },
-  "devDependencies": {
-    "tape": "^3.0.0"
+  "scripts": {
+    "test": "node --test test/*.js",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/substack/chi-squared.js.git"
-  },
-  "scripts": {
-    "test": "tape test/*.js"
+    "url": "git+https://github.com/unabandoned/chi-squared.js.git"
   },
   "keywords": [
     "χ²",
@@ -28,5 +23,25 @@
     "email": "mail@substack.net",
     "url": "http://substack.net"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unabandoned/chi-squared.js/issues"
+  },
+  "homepage": "https://github.com/unabandoned/chi-squared.js#readme",
+  "devDependencies": {
+    "@commitlint/cli": "21.2.2",
+    "@commitlint/config-conventional": "21.2.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "files": [
+    "index.js",
+    "cdf.js",
+    "gamma.js"
+  ]
 }

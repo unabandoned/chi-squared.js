@@ -1,4 +1,4 @@
-var gamma = require('gamma');
+var gamma = require('./gamma');
 
 exports.pdf = function (x, k_) {
     if (x < 0) return 0;
