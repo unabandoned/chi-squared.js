@@ -1,0 +1,28 @@
+schema: 1
+
+package: "@unabandoned/chi-squared"
+
+upstream:
+  repo: dominictarr/chi-squared.js
+  reason: "no release since 1.1.0 in 2014; npm still points at substack/chi-squared.js, which no longer exists on GitHub"
+
+summary: >-
+  Probability density and cumulative distribution functions for the chi-squared
+  distribution.
+
+why-forked: >-
+  CyberChef ships it at runtime, and it was abandoned while carrying its own
+  runtime dependency, gamma, frozen since 2014 as well. gamma is a single file
+  with no dependencies, so it is vendored in-tree and the fork has zero runtime
+  dependencies.
+
+used-by:
+  - consumer: TheTechNetwork/CyberChef
+    purpose: >-
+      scores candidate decodings in the Magic operation, turning each
+      chi-squared statistic against a language's letter frequencies into a
+      probability via chi.cdf
+
+status: active
+
+tags: [math, statistics, chi-squared, probability]

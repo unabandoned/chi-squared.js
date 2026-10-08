@@ -1,4 +1,4 @@
-var LogGamma = require('gamma').log
+var LogGamma = require('./gamma').log
 
 // The following code liberated from
 // http://www.math.ucla.edu/~tom/distributions/chisq.html
