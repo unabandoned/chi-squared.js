@@ -5,6 +5,13 @@ var assert = require('node:assert');
 
 var chi = require('../');
 
+// Upstream asserted these values with exact equality, but they depend on the
+// engine's Math.pow/Math.exp, which differ in the last ulp between V8
+// releases (Node 22 vs 24). A 1e-12 relative tolerance still pins them.
+function same(actual, expected) {
+  close(actual, expected, Math.abs(expected) * 1e-12);
+}
+
 function close(actual, expected, tol) {
   assert.ok(
     Math.abs(actual - expected) <= tol,
@@ -13,9 +20,9 @@ function close(actual, expected, tol) {
 }
 
 describe('chi.pdf', function () {
-  it('matches the upstream regression values exactly', function () {
-    assert.strictEqual(chi.pdf(0.5, 1), 0.4393912894677223);
-    assert.strictEqual(chi.pdf(2.3, 1.4), 0.11695769277348175);
+  it('matches the upstream regression values', function () {
+    same(chi.pdf(0.5, 1), 0.4393912894677223);
+    same(chi.pdf(2.3, 1.4), 0.11695769277348175);
   });
 
   it('agrees with the closed form for k = 2, e^(-x/2) / 2', function () {
@@ -37,10 +44,10 @@ describe('chi.pdf', function () {
 });
 
 describe('chi.cdf', function () {
-  it('matches the upstream regression values exactly', function () {
-    assert.strictEqual(chi.cdf(2, 2), 0.6321204474030797);
-    assert.strictEqual(chi.cdf(1, 3), 0.19874802827905516);
-    assert.strictEqual(chi.cdf(200, 256), 0.00399456708950239);
+  it('matches the upstream regression values', function () {
+    same(chi.cdf(2, 2), 0.6321204474030797);
+    same(chi.cdf(1, 3), 0.19874802827905516);
+    same(chi.cdf(200, 256), 0.00399456708950239);
   });
 
   it('agrees with the closed form for k = 2, 1 - e^(-x/2)', function () {
